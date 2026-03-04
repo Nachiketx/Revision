@@ -1,0 +1,252 @@
+
+# 🟦 **1. Java & OOP – Theoretical Questions**
+
+### **Core OOP**
+
+1.  What is Object-Oriented Programming? Explain all 4 pillars.
+2.  Difference: **Abstraction vs Encapsulation**.
+3.  Types of polymorphism in Java: **compile-time vs run-time**.
+4.  **Method Overloading vs Method Overriding**.
+5.  Why can't constructors be overridden?
+6.  Why doesn’t Java support **multiple inheritance**? How do **interfaces** solve it?
+7.  `this` vs `super` keyword.
+8.  Constructor chaining in Java.
+9.  What are **access modifiers** in Java?
+10. Difference between **class** vs **object**.
+11. **Interface vs Abstract class** (Java 8+ default/static methods).
+12. Composition vs Inheritance (which is preferred? why?).
+13. **final**, **finally**, and **finalize()** → differences.
+14. Why is **String immutable** in Java?
+15. Explain **String vs StringBuilder vs StringBuffer**.
+16. Is Java pass-by-value or pass-by-reference? Explain with example.
+17. What is a **static block**, **static method**, **static variable**?
+
+***
+
+# 🟦 **2. Java Execution & Memory Model**
+
+1.  Difference between **JDK, JRE, JVM**.
+2.  Explain **JVM architecture**.
+3.  Java Memory Model: **Heap**, **Stack**, **PC Register**, **Method Area**.
+4.  What is **Metaspace**?
+5.  How does **Garbage Collection** work in Java?
+6.  Explain **stop-the-world** events.
+7.  What are **ClassLoaders**? (Bootstrap, Extension, Application)
+8.  Difference between:
+    *   ClassNotFoundException
+    *   NoClassDefFoundError
+9.  **Checked vs Unchecked exceptions**.
+10. Explain **try-with-resources** and AutoCloseable.
+
+***
+
+# 🟦 **3. Java Collections & Generics**
+
+1.  Difference: **List vs Set vs Map**.
+2.  **HashMap vs Hashtable vs ConcurrentHashMap**.
+3.  How does **HashMap work internally**?
+4.  Hash collision handling → chaining vs treeification.
+5.  Why does HashMap convert to **balanced red‑black tree** after Java 8?
+6.  ArrayList vs LinkedList.
+7.  HashSet vs TreeSet.
+8.  Can a HashMap contain duplicate keys?
+9.  Iterator vs ListIterator.
+10. Fail-fast vs Fail-safe iterators.
+11. Comparable vs Comparator.
+12. PriorityQueue vs TreeMap vs LinkedHashMap.
+13. Why is HashMap not thread-safe?
+
+***
+
+# 🟦 **4. Java Concurrency / Multithreading**
+
+1.  Thread life cycle.
+2.  Creating threads:
+    *   extend Thread
+    *   implement Runnable
+3.  synchronized keyword → method-level & block-level locking.
+4.  Volatile keyword → what does it guarantee?
+5.  Difference: **synchronized vs Lock interface**.
+6.  Deadlock & how to prevent it.
+7.  Executor framework:
+    *   ThreadPoolExecutor
+    *   ScheduledThreadPool
+8.  Future vs Callable.
+9.  ConcurrentHashMap internal working.
+10. Atomic classes (AtomicInteger, etc.).
+11. ThreadLocal usage.
+
+***
+
+# 🟦 **5. Java Language Specifics**
+
+1.  What is marker interface? (e.g., Serializable, Cloneable)
+2.  What is Serialization and Deserialization?
+3.  Why override `equals()` and `hashCode()`?
+4.  Cloning: shallow vs deep copy in Java.
+5.  Java Annotations.
+6.  Immutable classes → how to design?
+7.  Java Enums (features, methods, usage).
+
+***
+
+# 🟦 **6. Backend / API / Security Concepts**
+
+1.  What is a **REST API**?
+2.  What does **stateless** mean?
+3.  **HTTP methods**: GET, POST, PUT, DELETE, PATCH.
+4.  **JWT** – structure, use, how it works.
+5.  **OAuth 2.0** – roles & flows.
+6.  What is **token-based authentication**?
+7.  Why is storing passwords in **plain string** bad?
+8.  Hashing vs Encryption (SHA-256, bcrypt, etc.)
+9.  Salting concepts.
+10. API versioning strategies.
+11. HATEOAS concept.
+12. How to secure APIs:
+    *   rate limiting
+    *   input validation
+    *   authentication
+    *   authorization
+13. CORS policy.
+14. Base64 encoding/decoding.
+15. How to protect against:
+    *   SQL Injection
+    *   CSRF
+    *   XSS
+
+***
+
+# 🟦 **7. SQL / Database Concepts**
+
+1.  Primary Key, Foreign Key, Indexes.
+2.  SQL Joins — inner, left, right, full.
+3.  HAVING vs WHERE.
+4.  2nd highest salary queries (multiple solutions).
+5.  ACID properties.
+6.  Normalization (1NF, 2NF, 3NF, BCNF).
+7.  SQL vs NoSQL differences.
+8.  When to choose NoSQL (use-cases).
+9.  Database transaction isolation levels.
+10. How indexing works internally.
+
+***
+
+# 🟦 **8. System Design / Project / Architecture**
+
+1.  Explain your project architecture end-to-end.
+2.  Why did you choose Java + chosen DB?
+3.  How authentication is handled in your project.
+4.  Why do we hash passwords?
+5.  OTP generation & validation flow.
+6.  Components of an ML model pipeline.
+7.  Why AES? Alternatives?
+8.  Blockchain basics.
+9.  How you handled multiple clients in a project.
+10. High-level design of:
+    *   Banking system
+    *   E-commerce system
+    *   Inventory system
+    *   Parking lot system
+11. Monolith vs Microservices.
+12. Load balancing concepts.
+13. Caching (Redis) and cache invalidation.
+
+***
+
+# 🟦 **9. DSA Coding Questions (Java-Friendly)**
+
+### Linked List
+
+1.  Implement Linked List (custom class).
+2.  Reverse a linked list.
+3.  Detect cycle in linked list (Floyd's).
+4.  Check if a linked list is palindrome.
+
+### Arrays / Strings
+
+5.  Reverse a string (without using reverse()).
+6.  Find the second maximum element.
+7.  Remove duplicates from array / list.
+8.  Two Sum.
+9.  Print frequency of characters in string.
+10. Check if string is anagram.
+
+### Searching & Math
+
+11. Implement binary search.
+12. Implement square root (binary search).
+13. Fibonacci: recursive + optimized.
+14. Factorial using recursion.
+15. Missing number in 1..N.
+16. Count occurrences of digit (e.g., count all ‘7’ from 1-1000).
+
+### DP & Misc
+
+17. Max square submatrix of 1s (DP).
+18. Kadane’s algorithm.
+19. Sliding window questions.
+20. Longest substring without repeating characters.
+
+***
+
+# 🟦 **10. OOP Coding Questions (Java)**
+
+1.  Design a class showing all OOP pillars.
+2.  Implement:
+    *   abstract class
+    *   interface
+    *   multiple interfaces
+3.  Implement Singleton (lazy, eager, thread-safe).
+4.  Polymorphism example: method overriding.
+5.  Class design:
+    *   Car → Wheel, Window, Door (composition).
+6.  Customer/user/account class modeling.
+7.  Upcasting & Downcasting example.
+8.  Implement Cloneable (deep copy).
+9.  Design a class to view user details based on account type.
+10. Snowflake-style class hierarchy (multi-level).
+
+***
+
+# 🟦 **11. Puzzle Questions**
+
+1.  3L & 5L jugs → measure 4L.
+2.  Two ropes that burn non-uniformly → measure 90 minutes.
+3.  25 horses → find 3 fastest with minimum races.
+4.  8 balls → find heavier with 2 weighings.
+5.  Mislabelled jars puzzle.
+6.  Machines & products puzzle (100 machines).
+7.  Cipher: apple → bqqmf. What is orange?
+8.  Sequence puzzle: 3, 7, 15, 31, 63, ?
+9.  Fish length riddle.
+10. Two clocks puzzle.
+11. Color preference puzzle.
+12. Socks box puzzle:
+    *   matching pair
+    *   non-matching pair
+13. Spider on web — how does it know direction?
+
+***
+
+# 🟦 **12. Personal / Behavioral Questions**
+
+1.  Tell me about yourself.
+2.  Family background.
+3.  Strengths & weaknesses.
+4.  Career aspirations.
+5.  Why Java?
+6.  Languages you know besides Java.
+7.  Why code when AI exists?
+8.  Will AI replace jobs?
+9.  How you handle pressure/deadlines.
+10. What do you do when stuck on a bug?
+11. How do you correct a senior respectfully?
+12. Your hobbies & passion.
+13. Experience with cloud / DevOps.
+14. If learning a new tech, which one and why?
+15. Your role in your project.
+16. How you handled multiple clients.
+
+***
+
