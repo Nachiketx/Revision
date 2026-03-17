@@ -1,0 +1,153 @@
+## ✅ Theoretical Questions
+
+### OOP & Language Fundamentals
+
+*   What is OOP? Explain the **4 pillars** (Abstraction, Encapsulation, Inheritance, Polymorphism).
+*   **Abstraction vs Encapsulation** (differences and examples).
+*   **Polymorphism**: static (compile-time) vs dynamic (run-time).
+*   **Function overloading vs method overriding**.
+*   **Virtual** keyword: purpose and behavior.
+*   Can a **constructor** be virtual? Why/why not?
+*   **Friend function** in C++ (what/why).
+*   **Multiple inheritance** & the **Diamond problem** (what it is; how to solve).
+*   **Access specifiers** (public/protected/private) and use-cases.
+*   **Struct vs class** in C++.
+*   **Interface** concept (in C++ via abstract classes).
+*   **RTTI** (Run-Time Type Information).
+*   **C++ casts**: `static_cast`, `dynamic_cast` (with references), `const_cast`, `reinterpret_cast`.
+*   **Shallow copy vs deep copy**; issues like **dangling pointers**.
+*   **Memory management**: `new/delete` vs `malloc/free` (and why prefer one over the other).
+*   **Memory leak**: definition and how **smart pointers** help (`unique_ptr`, `shared_ptr`, `weak_ptr`).
+*   **High-level vs low-level C++** topics (pointers, smart pointers, memory management).
+*   **Map vs vector vs set** (STL comparisons).
+*   **Duplicate keys in `std::map`** (allowed or not?).
+*   **String: mutable or immutable** (language-specific considerations).
+*   **Pass by value / reference / address**.
+*   **Global vs local objects**.
+*   **Stack vs queue**; **tree** (definition & when to use).
+*   **For-loop mechanics** (pre/post increment; nested loops behavior).
+
+### Algorithms & Complexity
+
+*   **Big-O notation**, other **asymptotic notations**, and **why** we use Big-O.
+*   Why **Binary Search** worst-case is **O(log n)**.
+
+### Databases & SQL
+
+*   **Primary key, foreign key, constraints, indexes**.
+*   **SQL joins** (inner/left/right/full).
+*   **HAVING vs WHERE**.
+*   Approaches to find the **second highest salary** (various SQL queries).
+
+### Backend / API / Security
+
+*   What is a **token**? How does it work?
+*   **JWT** (JSON Web Token): what and how.
+*   **OAuth**: what and how.
+*   What does **stateless** mean in **REST API**?
+*   **How do you secure APIs?**
+*   **API versioning** strategies.
+*   **HATEOAS**: what and why.
+*   **Base64** encoding/decoding.
+
+### Project / System Design & ML (Conceptual)
+
+*   **Explain your project(s)** (mini, banking, final-year) and **architecture**.
+*   **Database choice** for the project and **why** (SQL vs NoSQL).
+*   **Authentication** design; ensuring **unique accounts**.
+*   **Password storage** and **matching** approach (why use string, hashing, salting).
+*   **OTP generation** and **matching** mechanism.
+*   **ML project**: problem statement, model components, how a model works internally; **model comparison** and **why you chose one**.
+*   Use of **AES**, **blockchain**, and alternatives; justify choices.
+*   **Project management** methods (Agile/Scrum).
+*   Handling **multiple clients** in projects.
+
+***
+
+## 🧮 DSA-Based Coding Questions
+
+*   **Linked List**
+    *   Implement a **LinkedList class** & **operations**.
+    *   **Reverse** a linked list.
+    *   **Detect cycle** in a linked list.
+    *   **Check palindrome** in a linked list.
+*   **Arrays / Strings / Vectors**
+    *   **Reverse a string**.
+    *   **Find unique elements** in an array.
+    *   Find the **second maximum** element in an array.
+    *   **Two Sum** in an unsorted array.
+    *   **Delete duplicates** in a `vector`.
+*   **Searching / Math**
+    *   **Binary search** / **Linear search** (implementations).
+    *   **Square root** computation (efficient methods).
+    *   **Factorial** (using recursion).
+    *   **Fibonacci** (iterative/recursive/optimized).
+    *   Given 1..N with one **missing number** (optimized).
+    *   Given a **5×5 0/1 matrix**, find **maximum square submatrix** of 1s (DP).
+    *   **Count occurrences of a digit** (e.g., 7) from **1 to 1000**.
+
+***
+
+## 🧱 OOPs-Based Coding Questions
+
+*   **Write/modify classes** from your project to demonstrate OOP:
+    *   Show **inheritance**, **polymorphism**, **encapsulation**, **abstraction**.
+    *   Draw/Explain a **class diagram**; then implement selected classes.
+*   **Singleton** pattern (implement).
+*   **Copy control**:
+    *   Implement **copy constructor** and **copy assignment operator** (deep copy).
+*   **Interface/Abstract class** example (e.g., pure virtuals).
+*   **Virtual functions** demo (runtime polymorphism).
+*   **Diamond problem** demo & **resolution** using `virtual` inheritance.
+*   **Casting examples** showing `static_cast` / `dynamic_cast` use.
+*   **Design-oriented class tasks**:
+    *   Implement a **Car** with composition (Wheel, Window, Door; each with properties like diameter, company, position).
+    *   Given members `(id, name, address, city, gender, interest, lastPurchase, phoneNumber)`, **design classes using OOP**.
+    *   “Snowflake-like structure” → implement **class structure**.
+    *   Implement a class to **view details of user based on account type**; and **handle forgotten account type** (domain logic).
+    *   Implement **customer details** class (no REST API assumed).
+
+> (Note: Linked list “class + operations” is often both OOP and DSA—here I kept all linked list algorithmic asks in **DSA** to avoid duplication.)
+
+***
+
+## 🧩 Puzzle Questions
+
+*   **Water jug**: Measure **4L** with **3L & 5L** jugs.
+*   **Ropes** burning in **1 hour** each: measure **90 minutes** (two variants: equal/unequal thickness; non‑uniform burn rate).
+*   **25 horses**, **find 3 fastest** with **min number of races** (5 tracks per race).
+*   **8 balls**, one heavier: find it in **2 weighings**.
+*   **Mislabeled jars** (Candies, Sweets, Mixed): **minimum picks** to label correctly.
+*   **Machines/products**: 5 machines → 5 products in 5 minutes; how long for **100 machines → 100 products**?
+*   **Cipher**: “apple → bqqmf”; what’s **orange**?
+*   **Number sequence**: 3, 7, 15, 31, 63, **?**
+*   **Fish length** puzzle (head/body/tail relationships).
+*   **Two clocks** (one slow, one normal): in 24 hours, **how many times** will it show correct time?
+*   **Colour preferences** (Alice/Bob/Carol with red/blue/green constraints).
+*   **Socks** box (5 pairs, different colors):
+    *   Best/worst iterations to obtain **one matching pair**.
+    *   Best/worst iterations to obtain **one non-matching pair**.
+*   **Spider** at center of web: how does it detect **which side** the attack comes from?
+
+***
+
+## 👤 Personal / Behavioral Questions
+
+*   **Introduce yourself**.
+*   **Family background**.
+*   **Career aspirations** (short-term & long-term).
+*   **Which language are you most comfortable with?**
+*   **Languages you know** besides C++.
+*   **Java vs C++** (differences) / **Java collections** (if applicable).
+*   **Why write code when we have ChatGPT/AI?**
+*   Will **AI replace jobs**? Your perspective.
+*   **How do you manage pressure and deadlines?**
+*   What do you do when **stuck on a bug**?
+*   If a **senior’s solution is wrong**, how do you handle it?
+*   **Passion and hobbies**.
+*   Do you know **Python**? Which **libraries**?
+*   Do you know **C#**?
+*   Experience with **cloud** technologies? With **DevOps**?
+*   If you had to **learn a new technology**, which one and **why**?
+*   **Your project role** and **contributions**.
+*   **How you handled multiple clients** in projects.
