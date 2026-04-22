@@ -1,0 +1,202 @@
+User
+- userId: int
+- username: string
+- email: string
+- name: string
+- phone: string
+- role: UserRole
+- passwordHash: string
+- isActive: boolean
+
+Customer
+- customerId: int
+- name: string
+- phone: string
+- email: string
+- address: Address
+- purchaseHistory: List<Order>
+
+Medicine
+- medicineId: int
+- type/category: string (Ointment,tablets,syrup,equipment,Others)
+- name: string
+- brand: string
+- Price: Decimal
+- isPrescriptionRequired: boolean
+
+StockBatch
+- batchId: int
+- batchNo: string
+- expiryDate: DateTime
+- quantityAvailable: int
+
+Order
+- orderId: int
+- customer: Customer
+- orderDate: DateTime
+- status: OrderStatus (Confirmed/Cancelled)
+- totalAmount: Decimal
+- items: List<OrderItem>
+
+OrderItem
+- orderItemId: int
+- medicine: Medicine
+- batch: StockBatch
+- quantity: int
+- unitPrice: Decimal
+- lineTotal: Decimal
+
+Payment
+- paymentId: int
+- order: Order
+- amount: Decimal
+- paymentDate: DateTime
+- status: PaymentStatus (Success, Failed)
+- transactionRef: string
+
+Notice 
+- list of stock expiring in 2 weeks (add this function)
+- list of stock less than threshold 10
+
+
+InventoryService: addMedicine(), addBatch(), updateStock(), checkExpiry()
+OrderService: placeOrder(), cancelOrder(), viewOrderDetails()
+PaymentService: processPayment(), refundPayment()
+UserService: manageUsers()
+ReportService: viewReports(), exportReports()
+
+
+Role = { ADMIN, PHARMACIST, CUSTOMER }
+
+Permission = {
+  MANAGE_USERS,
+  READ_ALL_ORDERS,
+  DISPENSE_ORDER,
+  MANAGE_INVENTORY,
+  VIEW_REPORTS,
+  PLACE_ORDER,
+  VIEW_OWN_ORDERS,
+  PAY_ORDER,
+  VIEW_RECEIPT
+}
+Admin: all permissions
+Pharmacist: DISPENSE_ORDER, MANAGE_INVENTORY, VIEW_REPORTS (limited)
+Customer: PLACE_ORDER, VIEW_OWN_ORDERS, PAY_ORDER, VIEW_RECEIPT, UPDATE_PROFILE
+
+User
+      (common identity)
+         /        \
+     Staff       Customer
+   /      \
+Admin   Pharmacist
+
+
+-- ============================================
+-- Pharmacy Management System - Minimal Schema
+-- ============================================
+-- Features:
+--  - Users (ADMIN / PHARMACIST / CUSTOMER)
+--  - Medicines with simple stock (CRUD)
+--  - Orders (CONFIRMED / CANCELLED) with order_date as DATE
+--  - Order Items (quantity + unit_price snapshot)
+--  - Payments (SUCCESSFUL / FAILED)
+-- ============================================
+
+-- ---------- Safe drop (run anytime) ----------
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS medicines;
+DROP TABLE IF EXISTS users;
+
+-- ---------- 1) Users ----------
+CREATE TABLE users (
+  user_id        BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  username       VARCHAR(50)  NOT NULL UNIQUE,
+  email          VARCHAR(255) NOT NULL UNIQUE,
+  full_name      VARCHAR(120) NOT NULL,
+  phone          VARCHAR(20),
+  password_hash  TEXT NOT NULL,
+
+  role           VARCHAR(20) NOT NULL
+                 CHECK (role IN ('ADMIN', 'PHARMACIST', 'CUSTOMER')),
+);
+
+-- Optional indexes
+CREATE INDEX idx_users_role ON users(role);
+CREATE INDEX idx_users_phone ON users(phone);
+
+-- ---------- 2) Medicines (simple stock) ----------
+CREATE TABLE medicines (
+  medicine_id   BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name          VARCHAR(150) NOT NULL,
+  brand         VARCHAR(150),
+  price         DECIMAL(12,2) NOT NULL CHECK (price >= 0),
+  stock         INT NOT NULL CHECK (stock >= 0),
+  expiry_date   DATE,UNIQUE (name, brand)
+);
+
+CREATE INDEX idx_medicines_name ON medicines(name);
+
+-- ---------- 3) Orders (order_date as DATE) ----------
+CREATE TABLE orders (
+  order_id      BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
+  customer_id   BIGINT NOT NULL REFERENCES users(user_id),
+
+  status        VARCHAR(20) NOT NULL
+                CHECK (status IN ('CONFIRMED', 'CANCELLED')),
+
+  order_date    DATE NOT NULL DEFAULT CURRENT_DATE,
+
+  total_amount  DECIMAL(12,2) NOT NULL CHECK (total_amount >= 0)
+);
+
+CREATE INDEX idx_orders_customer ON orders(customer_id);
+CREATE INDEX idx_orders_status ON orders(status);
+CREATE INDEX idx_orders_date ON orders(order_date);
+
+-- ---------- 4) Order Items ----------
+CREATE TABLE order_items (
+  order_item_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
+  order_id      BIGINT NOT NULL REFERENCES orders(order_id) ON DELETE CASCADE,
+  medicine_id   BIGINT NOT NULL REFERENCES medicines(medicine_id),
+
+  quantity      INT NOT NULL CHECK (quantity > 0),
+
+  -- snapshot price at time of purchase
+  unit_price    DECIMAL(12,2) NOT NULL CHECK (unit_price >= 0),
+
+  -- stored for convenience; usually equals quantity * unit_price
+  line_total    DECIMAL(12,2) NOT NULL CHECK (line_total >= 0),
+
+  -- avoid duplicate medicine lines within the same order
+  UNIQUE (order_id, medicine_id)
+);
+
+CREATE INDEX idx_order_items_order ON order_items(order_id);
+CREATE INDEX idx_order_items_medicine ON order_items(medicine_id);
+
+-- ---------- 5) Payments ----------
+CREATE TABLE payments (
+  payment_id      BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
+  order_id        BIGINT NOT NULL REFERENCES orders(order_id) ON DELETE CASCADE,
+
+  amount          DECIMAL(12,2) NOT NULL CHECK (amount >= 0),
+
+  status          VARCHAR(20) NOT NULL
+                  CHECK (status IN ('SUCCESSFUL', 'FAILED')),
+
+  payment_date    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+  transaction_ref VARCHAR(120)
+);
+
+CREATE INDEX idx_payments_order ON payments(order_id);
+CREATE INDEX idx_payments_status ON payments(status);
+
+-- ============================================
+-- End of file
+-- ============================================
